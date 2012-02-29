@@ -1,3 +1,4 @@
+require 'password'
 class User < ActiveRecord::Base
   def self.authenticate(nick, pass)
     user = find(:first, :conditions => ['nick = ?',nick])
@@ -13,6 +14,8 @@ class User < ActiveRecord::Base
     write_attribute(:password, password = Password::update(pass))
   end
   
+  
+  has_many :SearchStrings
   validates :name, :presence => true, :uniqueness => true
   validates :password, :presence => true
 end

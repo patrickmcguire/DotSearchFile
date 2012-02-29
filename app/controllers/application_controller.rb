@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_filter :login_required, :except => [:login]
   
   def login
     case request.method
