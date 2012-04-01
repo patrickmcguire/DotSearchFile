@@ -7,8 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'sqlite3'
 
-gem 'json'
-
+gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -19,6 +18,15 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'rspec-rails', '2.6.1'
+  gem 'annotate', '2.4.0'
+end
+
+group :test do
+  gem 'spork'
 end
 
 gem 'jquery-rails'
