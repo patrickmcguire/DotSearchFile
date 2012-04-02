@@ -11,22 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331204329) do
+ActiveRecord::Schema.define(:version => 20120401230607) do
+
+  create_table "list_ownerships", :force => true do |t|
+    t.boolean  "public"
+    t.integer  "search_list_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "list_subscriptions", :force => true do |t|
+    t.integer  "search_list_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "search_lists", :force => true do |t|
     t.string   "name"
+    t.integer  "user_id"
+    t.integer  "list_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "search_tags", :force => true do |t|
-    t.string   "tag"
+  create_table "search_ownerships", :force => true do |t|
+    t.boolean  "public"
+    t.integer  "user_id"
+    t.integer  "foreign_key"
+    t.integer  "search_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "search_subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "search_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "searches", :force => true do |t|
     t.string   "search"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
