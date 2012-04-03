@@ -1,0 +1,21 @@
+<h1>Listing search_subscriptions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @search_subscriptions.each do |search_subscription| %>
+  <tr>
+    <td><%= link_to 'Show', search_subscription %></td>
+    <td><%= link_to 'Edit', edit_search_subscription_path(search_subscription) %></td>
+    <td><%= link_to 'Destroy', search_subscription, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Search subscription', new_search_subscription_path %>

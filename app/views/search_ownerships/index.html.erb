@@ -1,0 +1,21 @@
+<h1>Listing search_ownerships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @search_ownerships.each do |search_ownership| %>
+  <tr>
+    <td><%= link_to 'Show', search_ownership %></td>
+    <td><%= link_to 'Edit', edit_search_ownership_path(search_ownership) %></td>
+    <td><%= link_to 'Destroy', search_ownership, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Search ownership', new_search_ownership_path %>

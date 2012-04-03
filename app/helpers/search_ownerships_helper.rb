@@ -1,0 +1,2 @@
+module SearchOwnershipsHelper
+end

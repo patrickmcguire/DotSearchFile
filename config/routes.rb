@@ -1,4 +1,12 @@
 Dotsearchfile::Application.routes.draw do
+  resources :search_subscriptions
+
+  resources :search_ownerships
+
+  resources :list_subscriptions
+
+  resources :list_ownerships
+
   resources :lolwuts
 
   resources :users

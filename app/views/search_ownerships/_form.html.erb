@@ -1,0 +1,17 @@
+<%= form_for(@search_ownership) do |f| %>
+  <% if @search_ownership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@search_ownership.errors.count, "error") %> prohibited this search_ownership from being saved:</h2>
+
+      <ul>
+      <% @search_ownership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
