@@ -1,0 +1,6 @@
+<% @search_lists.each do |search_list| %>
+  <span class="search_list"><%= search_list.name %></span>
+  <% search_list.tags.each do |tag| %>
+  	<a class="search_tag"><%= link_to(search_list.tag, show_tag_path(search_list)) %></a>
+  <% end %>
+<% end %>

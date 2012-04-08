@@ -20,7 +20,5 @@ Dotsearchfile::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 
-  resources :search_strings
-
   root :to => "home#index"
 end

@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-	<b>Name:</b>
-	<%= @user.name %>
-</p>
-
-<p>
-	<b>Email:</b>
-	<%= @user.email %>
-</p>
-
-<p>
-	<b>Hashed password:</b>
-	<%= @user.password %>
-</p>
-
+<div id="notice"><%= notice %></div>
+<div id="name" class="name"><%= @user.name %></div>
+<div id="list_subscriptions" class="list_subscriptions">
+  Search lists
+  <ul>
+  	<li><%= link_to 'Create', create_search_list_path(@user) %>
+  	<% @search_lists.each do |search_list| %>
+  	  <li><%= render :template => "search_lists/#{search_list.id}" %></li>
+  	<% end %>
+  </ul>
+</div>
+<div id="subscriptions">
+  Searches
+  <ul>
+  	<li><%= link_to 'Create', create_search_path(@user) %>
+    <% @searches.each do |search| %>
+      <li><%= render :template => "searches/#{search.id}" %></li>
+    <% end %>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

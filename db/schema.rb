@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403020340) do
+ActiveRecord::Schema.define(:version => 20120408035020) do
 
   create_table "list_ownerships", :force => true do |t|
     t.boolean  "public"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(:version => 20120403020340) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "search_list_searches", :force => true do |t|
+    t.integer  "search",      :limit => 8
+    t.integer  "search_list", :limit => 8
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "search_list_tags", :force => true do |t|
+    t.integer  "search_list_id", :limit => 8
+    t.integer  "tag_id",         :limit => 8
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "search_lists", :force => true do |t|
@@ -50,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20120403020340) do
     t.integer  "search_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "search_tags", :force => true do |t|
+    t.integer  "search_id",  :limit => 8
+    t.integer  "tag_id",     :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "searches", :force => true do |t|

@@ -12,9 +12,9 @@ Rake::TaskManager.class_eval do
   Rake.application.delete_task("db:test:purge")
 end
 namespace :db do
-    namespace :test do
-        task :purge do
-            ActiveRecord::Migrator.migrate("db/migrate/", 0)
-        end
+  namespace :test do
+    task :purge do
+      ActiveRecord::Migrator.migrate("db/migrate/", 0)
     end
+  end
 end
