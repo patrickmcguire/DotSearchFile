@@ -1,0 +1,10 @@
+<div id="list_subscriptions" class="list_subscriptions">
+  List subscriptions
+  <ul>
+  	<% @lists.each do |list| %>
+  	  <% @list = list %>
+  	  <li><%= render :template => "lists/show" %></li>
+  	<% end %>
+  </ul>
+</div>
+

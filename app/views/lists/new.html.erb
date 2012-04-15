@@ -1,0 +1,14 @@
+<%= form_for(@search_list) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>		
+  </div>
+  <div class="field">
+  	<%= f.label :searches %>
+  	<%= f.text_field :searches %>
+  </div>
+  <div class="actions">
+  	<%= f.submit "Create" %>
+  </div>
+
+<% end %>

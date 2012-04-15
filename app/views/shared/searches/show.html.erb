@@ -1,0 +1,8 @@
+<div class="search">
+<span class="search-text"><%= @search.search %></span>
+<span class="tags">
+<% @search.tags.each do |tag| %>
+  <span class="tag"><%= tag.tag %></span>
+<% end %>
+</span>
+</div>

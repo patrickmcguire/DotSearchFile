@@ -1,5 +1,16 @@
 class HomeController < ApplicationController
   def index
-    @user = User.new
+    if signed_in?
+      dashboard
+      return
+    else
+      @user = User.new
+    end
   end
+  
+  private
+    def dashboard
+      @lists = current_user.lists
+      render :dashboard
+    end
 end

@@ -2,6 +2,17 @@ class ListSubscriptionsController < ApplicationController
   # GET /list_subscriptions
   # GET /list_subscriptions.json
   def index
+    user_id = params[:user_id].to_i
+    
+    if current_user.id != user_id
+      return head :forbidden
+    else
+      @list_subscriptions = ListSubscription.where(:user_id => user_id)
+      already_subscribed_ids = @list_subscriptions.collect {|subscription| subscription.search_list_id}
+      potential_list_ids = ListOwnership.find(:all, :conditions => ["public = true AND id NOT IN (?)", already_subscribed_ids])
+      @available_lists = SearchList.find(potential_list_ids)
+    end
+    
     @list_subscriptions = ListSubscription.all
 
     respond_to do |format|

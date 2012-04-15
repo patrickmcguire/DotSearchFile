@@ -1,20 +1,33 @@
+<%= render "shared/header" %>
+
 <div id="notice"><%= notice %></div>
 <div id="name" class="name"><%= @user.name %></div>
 <div id="list_subscriptions" class="list_subscriptions">
-  Search lists
+  List subscriptions
   <ul>
-  	<li><%= link_to 'Create', create_search_list_path(@user) %>
-  	<% @search_lists.each do |search_list| %>
-  	  <li><%= render :template => "search_lists/#{search_list.id}" %></li>
+  	<%= link_to 'Edit', user_list_subscriptions_path(@user) %>
+  	<% @lists.each do |list| %>
+  	  <% @list = list %>
+  	  <li><%= render :template => "lists/show" %></li>
   	<% end %>
   </ul>
 </div>
-<div id="subscriptions">
-  Searches
+<div id="list-ownerships" class="list-ownerships">
+  Lists you own
   <ul>
-  	<li><%= link_to 'Create', create_search_path(@user) %>
-    <% @searches.each do |search| %>
-      <li><%= render :template => "searches/#{search.id}" %></li>
+  	<% @owned_lists.each do |list| %>
+  	  <% @list = list %>
+  	  <li><%= render :template => "lists/show"%>
+  	<% end %>
+  </ul>
+</div>
+<div id="search-ownerships">
+  Filters you own
+  <ul>
+  	<%= link_to 'New', new_search_path %>
+    <% @owned_filters.each do |filter| %>
+      <% @filter = filter %>
+      <li><%= render :template => "filters/show" %></li>
     <% end %>
   </ul>
 </div>

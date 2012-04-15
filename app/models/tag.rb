@@ -1,6 +1,15 @@
 class Tag < ActiveRecord::Base
-  has_many :search_tags
-  has_many :search_list_tags
-  has_and_belongs_to_many :searches, :through => :search_tags
-  has_and_belongs_to_many :search_lists, :through => :search_list_tags
+  has_many :filter_tags, :dependent => :destroy
+  has_many :list_tags, :dependent => :destroy
+  has_many :filters, :through => :filter_tags
+  has_many :lists, :through => :list_tags
+  
+  validates :tag, :uniqueness => true
+  
+  before_save :format_tag
+    
+  private
+    def format_tag
+      self.tag = self.tag.downcase
+    end
 end

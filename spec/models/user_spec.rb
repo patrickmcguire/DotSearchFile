@@ -52,7 +52,7 @@ describe User do
     end
     
     it "should set the encrypted password" do
-      @user.encrypted_password should_not be_blank
+      @user.encrypted_password.should_not be_blank
     end
     
     describe "authentication method" do

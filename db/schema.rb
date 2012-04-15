@@ -11,70 +11,68 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120408035020) do
+ActiveRecord::Schema.define(:version => 20120414220416) do
 
-  create_table "list_ownerships", :force => true do |t|
-    t.boolean  "public"
-    t.integer  "search_list_id"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "list_subscriptions", :force => true do |t|
-    t.integer  "search_list_id"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "search_list_searches", :force => true do |t|
-    t.integer  "search",      :limit => 8
-    t.integer  "search_list", :limit => 8
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
-
-  create_table "search_list_tags", :force => true do |t|
-    t.integer  "search_list_id", :limit => 8
-    t.integer  "tag_id",         :limit => 8
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-  end
-
-  create_table "search_lists", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.integer  "list_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "search_ownerships", :force => true do |t|
+  create_table "filter_ownerships", :force => true do |t|
     t.boolean  "public"
     t.integer  "user_id"
     t.integer  "foreign_key"
-    t.integer  "search_id"
+    t.integer  "filter_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "search_subscriptions", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "search_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "search_tags", :force => true do |t|
-    t.integer  "search_id",  :limit => 8
+  create_table "filter_tags", :force => true do |t|
+    t.integer  "filter_id",  :limit => 8
     t.integer  "tag_id",     :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
 
-  create_table "searches", :force => true do |t|
-    t.string   "search"
+  create_table "filters", :force => true do |t|
+    t.string   "filter"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "list_filters", :force => true do |t|
+    t.integer  "filter_id",  :limit => 8
+    t.integer  "list_id",    :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.integer  "position"
+  end
+
+  create_table "list_ownerships", :force => true do |t|
+    t.boolean  "public"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "list_subscriptions", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "list_tags", :force => true do |t|
+    t.integer  "list_id",    :limit => 8
+    t.integer  "tag_id",     :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "preferences", :force => true do |t|
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

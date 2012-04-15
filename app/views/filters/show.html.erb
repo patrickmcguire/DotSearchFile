@@ -1,0 +1,8 @@
+<%= @filter.filter %>
+<ul class="tags">
+  <% @filter.tags.each do |tag| %>
+    <li class="tag">
+      <%= tag.tag %>
+    </li>
+  <% end %>
+</ul>
